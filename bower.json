@@ -1,0 +1,19 @@
+{
+  "name": "JSON Processor",
+  "version": "0.0.1",
+  "homepage": "https://github.com/craigwann/jsonProcessor",
+  "authors": [
+    "Craig Wann <craig@churchonthemove.com>"
+  ],
+  "description": "Parses JSON to automagically handle common post-request actions like adding/removing elements, altering element properties, injecting HTML, redirecting to a new page, and making new AJAX requests.",
+  "main": "jquery.jsonProcessor.js",
+  "keywords": [
+    "jquery",
+    "json",
+    "ajax"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "~2.1.1"
+  }
+}
