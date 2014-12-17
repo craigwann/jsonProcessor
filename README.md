@@ -42,7 +42,7 @@ After including jQuery and jquery.json-processor.js, JSON Processor will be avai
     
 ##Installing via Bower
 
-    bower install incraigulous/json-processor
+    bower install json-processor
 
 ##Filters
 ###elements
