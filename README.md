@@ -1,6 +1,8 @@
 JSON Processor
 ==============
 
+> Note: JSON Processor is still in development, but everything should be working!
+
 Parses JSON to automagically handle common post-request actions like adding/removing elements, altering element properties, injecting HTML, redirecting to a new page, and making new AJAX requests. JSON Processor is based on jQuery.
 
 ##How it works
