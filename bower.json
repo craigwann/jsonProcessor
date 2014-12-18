@@ -10,7 +10,9 @@
   "keywords": [
     "jquery",
     "json",
-    "ajax"
+    "ajax",
+    "processor",
+    "dom"
   ],
   "license": "MIT",
   "dependencies": {
