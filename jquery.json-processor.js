@@ -258,10 +258,20 @@ JsonProcessor.prototype = {
      */
     bsFieldErrorFilter: function(message) {
         var target = $(this.properties.target);
+
+        if (target.data("bsFieldErrorMsg")) {
+            //Remove any existing error messages if they exist
+            target.data("bsFieldErrorMsg").remove();
+        };
+        
         var group = target.parents('.form-group').first();
         if (group) {
             group.addClass('has-error');
         }
         group.append('<p class="help-block">' + message + '</p>');
+
+        //Store the error message so we can remove it later
+        var errorMsg = group.children('.help-block').first();
+        target.data("bsFieldErrorMsg", errorMsg)
     }
 };
