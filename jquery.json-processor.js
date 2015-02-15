@@ -17,13 +17,13 @@ JsonProcessor.prototype = {
         'redirect', //Redirect to a URL in the same window
         'redirectBlank', //Redirect to a URL in a new window
         'remove', //Remove the element from the dom,
-        'bootstrapError' //Sets a bootstrap style error on a field.
+        'bsFieldError' //Sets a bootstrap style error on a field.
     ],
     elementFilters: [
         'attributes', //Set element attributes
         'html', //Sets HTML value
         'url', //Gets HTML via AJAX and sets HTML value
-        'bootstrapError' //Sets a bootstrap style error on a field.
+        'bsFieldError' //Sets a bootstrap style error on a field.
     ],
     properties: {}, //The parsed JSON
 
@@ -256,7 +256,7 @@ JsonProcessor.prototype = {
      *
      * @param elements
      */
-    bootstrapErrorFilter: function(message) {
+    bsFieldErrorFilter: function(message) {
         var target = $(this.properties.target);
         var group = target.parents('.form-group').first();
         if (group) {
