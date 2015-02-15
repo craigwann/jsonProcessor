@@ -21,7 +21,8 @@ JsonProcessor.prototype = {
     elementFilters: [
         'attributes', //Set element attributes
         'html', //Sets HTML value
-        'url' //Gets HTML via AJAX and sets HTML value
+        'url', //Gets HTML via AJAX and sets HTML value
+        'bootstrapError' //Sets a bootstrap style error on a field.
     ],
     properties: {}, //The parsed JSON
 
@@ -242,10 +243,24 @@ JsonProcessor.prototype = {
      *
      * @param elements
      */
-    urlFilter: function($url) {
+    urlFilter: function(url) {
         var self = this;
         $(this.properties.target).load($url, function() {
             self.options.contentProcessor(this);
         });
+    },
+
+    /**
+     * Sets a bootstrap style error on a field.
+     *
+     * @param elements
+     */
+    bootstrapError: function(message) {
+        var self = this;
+        var group = $(this.properties.target).parents('form-group').first();
+        if (group) {
+            group.addClass('.hasError');
+        }
+        group.append('<p class="help-block">' + message + '</p>');
     }
 };
