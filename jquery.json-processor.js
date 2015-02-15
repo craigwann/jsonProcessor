@@ -16,7 +16,8 @@ JsonProcessor.prototype = {
         'message', //Alert a message
         'redirect', //Redirect to a URL in the same window
         'redirectBlank', //Redirect to a URL in a new window
-        'remove' //Remove the element from the dom
+        'remove', //Remove the element from the dom,
+        'bootstrapError' //Sets a bootstrap style error on a field.
     ],
     elementFilters: [
         'attributes', //Set element attributes
@@ -255,11 +256,11 @@ JsonProcessor.prototype = {
      *
      * @param elements
      */
-    bootstrapError: function(message) {
-        var self = this;
-        var group = $(this.properties.target).parents('form-group').first();
+    bootstrapErrorFilter: function(message) {
+        var target = $(this.properties.target);
+        var group = target.parents('.form-group').first();
         if (group) {
-            group.addClass('.hasError');
+            group.addClass('has-error');
         }
         group.append('<p class="help-block">' + message + '</p>');
     }
