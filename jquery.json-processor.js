@@ -16,7 +16,8 @@ JsonProcessor.prototype = {
         'message', //Alert a message
         'redirect', //Redirect to a URL in the same window
         'redirectBlank', //Redirect to a URL in a new window
-        'remove', //Remove the element from the dom
+        'remove', //Remove the element from the dom,
+        'bsFieldError' //Sets a bootstrap style error on a field.
     ],
     elementFilters: [
         'attributes', //Set element attributes
@@ -51,18 +52,6 @@ JsonProcessor.prototype = {
         $.each(properties, function(property, value) {
             self.filterProperty(property, value);
         });
-    },
-
-    /**
-     * Perform any clean-up actions from previous processing.
-     */
-    reset: function() {
-        if ($.inArray('bsFieldError', this.filters )) {
-            //Remove any help-blocks from bsFieldError.
-            jQuery(this.element).find('.help-block').each(function(index, el) {
-                jQuery(el).remove();
-            });
-        }
     },
 
     /**
@@ -270,6 +259,11 @@ JsonProcessor.prototype = {
      */
     bsFieldErrorFilter: function(message) {
         var target = $(this.properties.target);
+
+        if (target.data("bsFieldErrorMsg")) {
+            //Remove any existing error messages if they exist
+            target.data("bsFieldErrorMsg").remove();
+        };
 
         var group = target.parents('.form-group').first();
         if (group) {
