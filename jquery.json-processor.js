@@ -48,7 +48,6 @@ JsonProcessor.prototype = {
     process: function(properties) {
         var self = this;
         this.properties = properties;
-        this.reset();
         $.each(properties, function(property, value) {
             self.filterProperty(property, value);
         });
