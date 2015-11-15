@@ -28,7 +28,7 @@ JsonProcessor.prototype = {
     properties: {}, //The parsed JSON
 
     /**
-     * Parse the JSON then send it's properties to be filtered for action.
+     * Parse the JSON if needed then send it's properties to be filtered for action.
      *
      * @param json
      */
@@ -36,9 +36,13 @@ JsonProcessor.prototype = {
         if (!json) {
             return;
         }
-        properties = jQuery.parseJSON(json);
+        if (typeof json != 'object') {
+            properties = jQuery.parseJSON(json);
+        } else {
+            properties = json;
+        }
         this.process(properties);
-    },
+    };
 
     /**
      * Filter properties for action.
